@@ -27,18 +27,13 @@ ax1.plot(stock_data.index, stock_data['Signal Line'], label='Signal Line', color
 ax1.bar(stock_data.index, stock_data['MACD'] - stock_data['Signal Line'], label='Histogram', color='purple')
 ax1.set_title(f"MACD and Signal Line for {stock_symbol} Stock")
 ax1.set_ylabel("Value")
+ax1.axvline(x=pd.Timestamp('2023-08-30'), color='red', linestyle='--', label='Call Option Purchase')  # Vertical line added here
 ax1.legend()
 ax1.grid()
 
 # Plot Stock Price on the second subplot
 ax2.plot(stock_data.index, stock_data['Close'], label='Stock Price', color='green')
-
-# Convert the date string to a pandas Timestamp object
-purchase_date = pd.Timestamp('2023-08-30')
-
-# Add a red vertical line on August 30th
-ax2.axvline(x=purchase_date, color='red', linestyle='--', label='Call Option Purchase')
-
+ax2.axvline(x=pd.Timestamp('2023-08-30'), color='red', linestyle='--', label='Call Option Purchase')  # Vertical line added here
 ax2.set_title(f"Stock Price for {stock_symbol} Stock")
 ax2.set_xlabel("Date")
 ax2.set_ylabel("Price")
